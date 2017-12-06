@@ -1,8 +1,10 @@
 function pigTranslate (word){
+  //debugger;
   var alphabet = "abcdefghijklmnopqrstuvwxyz";
   var vowels = "aeiou"
   var letters = word;
   var result = '';
+  var cons = '';
   var letter = letters[0];
 
   if (word.length === 1){
@@ -22,12 +24,20 @@ function pigTranslate (word){
     } else if((vowels.indexOf(letters[0]) === -1) && (vowels.indexOf(letters[1]) === -1)){
       cons = word.slice(0, checkCons(letters));
       result = word.slice(checkCons(letters)) + cons + "ay"
+    } else if((vowels.indexOf(letters[0]) !== -1) && (vowels.indexOf(letters[1]) === -1) && (vowels.indexOf(letters[2]) === -1)){
+      var noVowel = letters.slice(1)
+      cons = word.slice(1, checkCons(noVowel)+1);
+      console.log(cons);
+      result = word.slice(checkCons(noVowel)+1) + letter + cons + "ay";
     }
   }
   return result;
 }
 
 function checkCons (word){
+  //this should only ever run for words that start with consonants
+  //returns the index of the last consonant
+  //debugger;
   var letters = word.split('');
   var vowels = "aeiouy".split('');
   var end = 0;
