@@ -1,15 +1,13 @@
 function pigTranslate (word){
   var alphabet = "abcdefghijklmnopqrstuvwxyz".split
   var letters = word.toLowerCase();
-  // for (i=0;i<letters.length;i++){
-  //   var letter = letters[i];
-  //   console.log(letter);
-  //   if (alphabet.indexOf(letter) === -1){
-  //     return letter;
-  //   }
-  //
-  // }
-  return word
+  var result;
+
+  if (word.length === 1){
+    result = word + "ay";
+  }
+
+  return result;
 }
 
 
