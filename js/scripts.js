@@ -1,17 +1,26 @@
 function pigTranslate (word){
-  var alphabet = "abcdefghijklmnopqrstuvwxyz"
-  var letters = word.toLowerCase();
-  var result;
+  var alphabet = "abcdefghijklmnopqrstuvwxyz";
+  var letters = word;
+  var result = '';
 
-  if (alphabet.indexOf(letters === 0)){
-    return word;
-  } else if (word.length === 1){
-    result = word + "ay";
-  }
+  //for (i=0;i<letters.length;i++){
+    //var letter = letters[i]
+
+    if (word.length === 1){
+      if (alphabet.indexOf(letters) === -1){
+        console.log(result);
+        result = letters;
+        return result
+      }
+      result = word + "ay";
+    } else if (word.length > 1){
+      result = word.slice(1)
+    }
+  //}
+
 
   return result;
 }
-
 
 
 
