@@ -51,11 +51,24 @@ function checkCons (word){
   }
 }
 
+function pigSentence (sentence){
+  debugger;
+  var words = sentence.split(' ');
+  var result = [];
+
+  for (i=0; i<words.length; i+= 1){
+    var word = words[i];
+    result.push(pigTranslate(word));
+  }
+
+  return result.join(' ');
+}
+
 $(document).ready(function() {
   $("form#translate").submit(function(event) {
     event.preventDefault();
-    var word = $("input#words").val();
-    var result = pigTranslate(word);
+    var input = $("input#words").val();
+    var result = pigSentence(input);
     $("#result").text(result);
   });
 });
