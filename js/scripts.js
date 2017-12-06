@@ -13,7 +13,10 @@ function pigTranslate (word){
         result = letters;
         return result
       }
+
       result = word + "ay";
+    } else if (letters[0] === "q" && letters[1] === "u") {
+      result = word.slice(2) + letter + 'ay'
     } else if (word.length > 1){
       result = word.slice(1) + letter + 'ay'
     }
