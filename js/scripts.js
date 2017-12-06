@@ -2,10 +2,11 @@ function pigTranslate (word){
   //debugger;
   var alphabet = "abcdefghijklmnopqrstuvwxyz";
   var vowels = "aeiou"
-  var letters = word;
+  var letters = word; //contains a string
   var result = '';
   var cons = '';
-  var letter = letters[0];
+  var conCheck = '';
+  var letter = letters[0];//contains a string 1 character long
 
   if (word.length === 1){
     if (alphabet.indexOf(letters) === -1){
@@ -16,47 +17,57 @@ function pigTranslate (word){
 
     result = word + "ay";
   } else if (word.length > 1){
-    result = word.slice(1) + letter + 'ay'
+
+    // conCheck = checkCons(letters)
 
     //logic fires if and only if word is longer than 1
     if (letters[0] === "q" && letters[1] === "u") {
-      result = word.slice(2) + letter + 'ay'
+      result = letters.slice(2) + 'quay'
     } else if((vowels.indexOf(letters[0]) === -1) && (vowels.indexOf(letters[1]) === -1)){
-      cons = word.slice(0, checkCons(letters));
-      result = word.slice(checkCons(letters)) + cons + "ay"
+      conCheck = checkCons(letters)
+      result = letters.slice(1) + letters.slice(0, 1) + 'ay';
     } else if((vowels.indexOf(letters[0]) !== -1) && (vowels.indexOf(letters[1]) === -1) && (vowels.indexOf(letters[2]) === -1)){
+      //console.log("first word vowel, next 2+ consonants ")
       var noVowel = letters.slice(1)
-      cons = word.slice(1, checkCons(noVowel)+1);
-      console.log(cons);
-      result = word.slice(checkCons(noVowel)+1) + letter + cons + "ay";
+      cons = letters.slice(1, checkCons(noVowel)+1);
+      result = letters.slice(checkCons(noVowel)+1) + letter + cons + "ay";
     }
+    else {
+      console.log("inner else ");
+      result = word.slice(1) + letter + 'ay'
+    }
+
+  }
+  else {
+    console.log("outer else");
   }
   return result;
 }
 
-function checkCons (word){
+function checkCons (word){ //word = the
   //this should only ever run for words that start with consonants
   //returns the index of the last consonant
   //debugger;
-  var letters = word.split('');
+  var letters = word.split(''); //letters = [t, h, e]
   var vowels = "aeiouy".split('');
-  var end = 0;
-  for (i=0;i<letters.length;i++){
-    var char = letters[i];
+  var end = 0; // end = 1
+  for (var j=0;j<letters.length;j++){ // iteration 3
+    var char = letters[j];  // char = e
     if (vowels.indexOf(char) === -1){
-      end = i
+      end = j
     } else {
-      return end
+      return end // return
     }
   }
 }
 
 function pigSentence (sentence){
-  debugger;
+  //debugger;
   var words = sentence.split(' ');
   var result = [];
 
-  for (i=0; i<words.length; i+= 1){
+  for (var i=0; i<words.length; i+=1){
+    console.log("i is: " + i);
     var word = words[i];
     result.push(pigTranslate(word));
   }
