@@ -1,9 +1,11 @@
 function pigTranslate (word){
-  var alphabet = "abcdefghijklmnopqrstuvwxyz".split
+  var alphabet = "abcdefghijklmnopqrstuvwxyz"
   var letters = word.toLowerCase();
   var result;
 
-  if (word.length === 1){
+  if (alphabet.indexOf(letters === 0)){
+    return word;
+  } else if (word.length === 1){
     result = word + "ay";
   }
 
